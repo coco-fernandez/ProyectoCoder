@@ -31,18 +31,14 @@ def crear_curso(request):
     return HttpResponse(f"Cursos: {str(lista_cursos)}")
 
 def profesores(request):
-    pass
     return HttpResponse("Vista de profes")
 
 def estudiantes(request):
-    pass
     return HttpResponse("Vista de estudiantes")
 
 def cursos(request):
-    pass
     return HttpResponse("Vista de cursos")
 
 def entregable(request):
-    pass
     return HttpResponse("Vista de entregable")
 
