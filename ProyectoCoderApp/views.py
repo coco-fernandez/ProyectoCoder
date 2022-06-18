@@ -39,6 +39,6 @@ def estudiantes(request):
 def cursos(request):
     return HttpResponse("Vista de cursos")
 
-def entregable(request):
+def entregables(request):
     return HttpResponse("Vista de entregable")
 
