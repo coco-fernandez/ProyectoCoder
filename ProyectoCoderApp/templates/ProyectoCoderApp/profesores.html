@@ -1,0 +1,31 @@
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+Profesores - AppCoder
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-4">
+                Los profesores son:
+                <ul class="list-group">
+                    {% comment %}
+                        {% for curso in cursos %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                {{ curso.nombre }} 
+                                <span class="badge bg-primary rounded-pill">{{ curso.comision }}</span>
+                                
+                            </li>
+                        {% endfor %}
+                    {% endcomment %}
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+</section>
+{% endblock %}
