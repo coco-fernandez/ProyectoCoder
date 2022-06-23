@@ -21,13 +21,24 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
 
     if request.method=="POST":    #post
         
-        info_formulario=request.POST
-        curso=Curso(nombre=request.POST["nombre"],comision=int(request.POST["comision"]))
-        curso.save()    #guarda en la DB
-        return redirect("cursos")
+        formulario=nuevo_curso(request.POST)
+        
+        if formulario.is_valid():
+            
+            info_curso=formulario.cleaned_data
+        
+            curso=Curso(nombre=info_curso["nombre"],comision=int(info_curso["comision"]))
+            
+            curso.save()    #guarda en la DB
+            
+            return redirect("cursos")
+        
+        else:
+            return render(request,'ProyectoCoderApp/formulario_curso.html',{"form":formulario})
     
     else:
         formulario_vacio=nuevo_curso()
+        
         return render(request,'ProyectoCoderApp/formulario_curso.html',{"form":formulario_vacio})
 
 def profesores(request):
