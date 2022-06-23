@@ -1,0 +1,31 @@
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+Buscar curso - AppCoder
+{% endblock %}
+
+{% block contenidoPagina %}
+<p>Buscar comisión: 
+    <form action="" method="post">
+        {% csrf_token %}
+
+
+        <!-- <p>Curso:  <input type="text" name="nombre" id="" maxlength="30"></p> -->
+        
+        <input type="number" name="comision" id="" min="0">
+
+
+        <input type="submit" value="Buscar">
+    </form> 
+</p>
+
+<p>Resultados:
+    <ul>
+        {% for resultado in comisiones %}
+            <li> {{ resultado.nombre }} [{{ resultado.comision }}] </li>
+        {% endfor %}
+    </ul>
+</p>
+
+{% endblock %}

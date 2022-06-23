@@ -27,7 +27,7 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
             
             info_curso=formulario.cleaned_data
         
-            curso=Curso(nombre=info_curso["nombre"],comision=int(info_curso["comision"]))
+            curso=Curso(nombre=info_curso["nombre"],comision=info_curso["comision"])
             
             curso.save()    #guarda en la DB
             
@@ -40,6 +40,21 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
         formulario_vacio=nuevo_curso()
         
         return render(request,'ProyectoCoderApp/formulario_curso.html',{"form":formulario_vacio})
+
+def buscar_comision(request):
+    
+    if request.method=="POST":
+        
+        comision=request.POST["comision"]
+        
+        comisiones=Curso.objects.filter(comision__icontains=comision)
+        
+        return render(request,'ProyectoCoderApp/buscar_comision.html',{"comisiones":comisiones})
+    
+    else:
+    
+        comisiones=[]    #Curso.objects.all()
+        return render(request,'ProyectoCoderApp/buscar_comision.html',{"comisiones":comisiones})
 
 def profesores(request):
     return render(request,'ProyectoCoderApp/profesores.html',{})
