@@ -1,1 +1,20 @@
-Agregando curso
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+Crear curso - AppCoder
+{% endblock %}
+
+{% block contenidoPagina %}
+<h2>Crea un curso nuevo:</h2>
+<form action="" method="post">
+    {% csrf_token %}
+
+    <p>Curso:  <input type="text" name="nombre" id=""></p>
+    
+    <p>Comsión:  <input type="number" name="comision" id="" min="0"></p>
+
+
+    <input type="submit" value="Crear Curso">
+</form>
+{% endblock %}
