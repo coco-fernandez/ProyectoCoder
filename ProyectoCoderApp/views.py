@@ -23,7 +23,7 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
         info_formulario=request.POST
         curso=Curso(nombre=request.POST["nombre"],comision=int(request.POST["comision"]))
         curso.save()    #guarda en la DB
-        return redirect("inicio")
+        return redirect("cursos")
     
     else:
         return render(request,'ProyectoCoderApp/formulario_curso.html',{})
