@@ -1,6 +1,6 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
 
@@ -16,9 +16,17 @@ def inicio(request):
 
     return render(request,"ProyectoCoderApp/index.html",{"mi_nombre":nombre,"dia_hora":hoy,"notas":notas})
 
-def crear_curso(request):
+def crear_curso(request):    # clase de creacion de curso por formulario de web
 
-    return render(request,'ProyectoCoderApp/formulario_curso.html',{})
+    if request.method=="POST":    #post
+        
+        info_formulario=request.POST
+        curso=Curso(nombre=request.POST["nombre"],comision=int(request.POST["comision"]))
+        curso.save()    #guarda en la DB
+        return redirect("inicio")
+    
+    else:
+        return render(request,'ProyectoCoderApp/formulario_curso.html',{})
 
 def profesores(request):
     return render(request,'ProyectoCoderApp/profesores.html',{})
