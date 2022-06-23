@@ -10,9 +10,11 @@ Crear curso - AppCoder
 <form action="" method="post">
     {% csrf_token %}
 
-    <p>Curso:  <input type="text" name="nombre" id="" maxlength="30"></p>
+
+    {{ form.as_p}}
+    <!-- <p>Curso:  <input type="text" name="nombre" id="" maxlength="30"></p>
     
-    <p>Comsión:  <input type="number" name="comision" id="" min="0"></p>
+    <p>Comsión:  <input type="number" name="comision" id="" min="0"></p> -->
 
 
     <input type="submit" value="Crear Curso">

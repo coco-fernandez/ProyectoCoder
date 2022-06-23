@@ -3,6 +3,7 @@ import datetime
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
+from .forms import nuevo_curso
 
 from ProyectoCoderApp.models import Curso
 
@@ -26,7 +27,8 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
         return redirect("cursos")
     
     else:
-        return render(request,'ProyectoCoderApp/formulario_curso.html',{})
+        formulario_vacio=nuevo_curso()
+        return render(request,'ProyectoCoderApp/formulario_curso.html',{"form":formulario_vacio})
 
 def profesores(request):
     return render(request,'ProyectoCoderApp/profesores.html',{})
