@@ -13,15 +13,17 @@ Estudiantes - AppCoder
             <div class="col-lg-4">
                 Los estudiantes son:
                 <ul class="list-group">
-                    {% comment %}
-                        {% for curso in cursos %}
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                {{ curso.nombre }} 
-                                <span class="badge bg-primary rounded-pill">{{ curso.comision }}</span>
+                    {% for estudiante in estudiantes %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
                                 
-                            </li>
-                        {% endfor %}
-                    {% endcomment %}
+                            {{ estudiante.nombre }} 
+                            {{ estudiante.apellido }}
+                            {{ estudiante.email }}
+                                
+                        </li>
+                    {% endfor %}
+                <a href="{% url 'crear_estudiante' %}"> + Ingresar nuevo Estudiante </a>
+
                 </ul>
             </div>
         </div>

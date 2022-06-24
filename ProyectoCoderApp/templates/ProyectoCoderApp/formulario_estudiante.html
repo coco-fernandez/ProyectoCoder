@@ -1,0 +1,22 @@
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+Ingresar Estudiante - AppCoder
+{% endblock %}
+
+{% block contenidoPagina %}
+<h2>Ingresa un Estudiante nuevo:</h2>
+<form action="" method="post">
+    {% csrf_token %}
+
+
+    {{ form.as_p}}
+    <!-- <p>Curso:  <input type="text" name="nombre" id="" maxlength="30"></p>
+    
+    <p>Comsión:  <input type="number" name="comision" id="" min="0"></p> -->
+
+
+    <input type="submit" value="Ingresar Estudiante">
+</form>
+{% endblock %}

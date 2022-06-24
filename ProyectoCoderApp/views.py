@@ -3,9 +3,9 @@ import datetime
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
-from .forms import nuevo_curso
+from .forms import nuevo_curso, nuevo_estudiante
 
-from ProyectoCoderApp.models import Curso
+from ProyectoCoderApp.models import Curso, Estudiante
 
 # Create your views here.
 
@@ -61,6 +61,30 @@ def profesores(request):
 
 def estudiantes(request):
     return render(request,'ProyectoCoderApp/estudiantes.html',{})
+
+def crear_estudiante(request):    # clase de creacion de curso por formulario de web
+
+    if request.method=="POST":    #post
+        
+        formulario=nuevo_estudiante(request.POST)
+        
+        if formulario.is_valid():
+            
+            info_estudiante=formulario.cleaned_data
+        
+            estudiante=Estudiante(nombre=info_estudiante["nombre"],apellido=info_estudiante["apellido"],email=info_estudiante["email"])
+            
+            estudiante.save()    #guarda en la DB
+            
+            return redirect("estudiantes")
+        
+        else:
+            return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario})
+    
+    else:
+        formulario_vacio=nuevo_estudiante()
+        
+        return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario_vacio})
 
 def cursos(request):
     # return HttpResponse("Vista de cursos")
