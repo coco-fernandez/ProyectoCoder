@@ -13,12 +13,12 @@ Inicio - AppCoder
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-9">
                 <div class="text-center my-5">
-                    <h1 class="display-5 fw-bolder text-white mb-2">Ésta es la pantalla inicial de mi primer web</h1>
-                    <p class="lead text-white-50 mb-4">Bienvenido a la pagina de Rodrigo N. Fernández</p>
+                    <h1 class="display-5 fw-bolder text-white mb-2">Bienvenido a la pagina principal de AppCoder</h1>
+                    <p class="lead text-white-50 mb-6">Aquí encontrará herramientas para crear y ver nuestras listas de Cursos, Estudiantes y Profesores. </p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="crear_curso">Crear Curso</a>
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="crear_estudiante">Ingresar Estudiante</a>
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="crear_profesor">Ingresar Profesor</a>
+                        <a class="btn btn-dark btn-lg px-4 me-sm-3" href="crear_curso">Crear Curso</a>
+                        <a class="btn btn-dark btn-lg px-4 me-sm-3" href="crear_estudiante">Ingresar Estudiante</a>
+                        <a class="btn btn-dark btn-lg px-4 me-sm-3" href="crear_profesor">Ingresar Profesor</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@ Inicio - AppCoder
 <section class="bg-light py-5">
     <div class="container px-5 my-5 px-5">
         <div class="text-center mb-5">
-            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+            <div class="feature btn btn-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
             <h2 class="fw-bolder">Contáctate con nosotros</h2>
             <p class="lead mb-0">Nos encantaría escucharte</p>
         </div>
@@ -48,26 +48,26 @@ Inicio - AppCoder
                     <div class="form-floating mb-3">
                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                         <label for="name">Nombre completo</label>
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">Nombre invalido, ingrese su nombre</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                         <label for="email">Correo electrónico</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">Correo electrónico inválido</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Ingrese un correo electrónico válido.</div>
                     </div>
                     <!-- Phone number input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                         <label for="phone">Teléfono</label>
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">Ingrese su número telefónico.</div>
                     </div>
                     <!-- Message input-->
                     <div class="form-floating mb-3">
                         <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
                         <label for="message">Mensaje</label>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Ningún carácter ingresado, ingrese su consulta.</div>
                     </div>
                     <!-- Submit success message-->
                     <!---->
@@ -87,7 +87,7 @@ Inicio - AppCoder
                     <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
-                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Enviar</button></div>
+                    <div class="d-grid"><button class="btn btn-success btn-lg disabled" id="submitButton" type="submit">Enviar</button></div>
                 </form>
             </div>
         </div>
