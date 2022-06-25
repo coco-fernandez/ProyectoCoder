@@ -60,7 +60,9 @@ def profesores(request):
     return render(request,'ProyectoCoderApp/profesores.html',{})
 
 def estudiantes(request):
-    return render(request,'ProyectoCoderApp/estudiantes.html',{})
+    estudiantes=Estudiante.objects.all()
+    ctx={"estudiantes":estudiantes}
+    return render(request,'ProyectoCoderApp/estudiantes.html',ctx)
 
 def crear_estudiante(request):    # clase de creacion de curso por formulario de web
 
@@ -82,14 +84,15 @@ def crear_estudiante(request):    # clase de creacion de curso por formulario de
             return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario})
     
     else:
-        formulario_vacio=nuevo_estudiante()
+        formulario=nuevo_estudiante()
         
-        return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario_vacio})
+        return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario})
 
 def cursos(request):
     # return HttpResponse("Vista de cursos")
     cursos=Curso.objects.all()
-    return render(request,'ProyectoCoderApp/cursos.html',{"cursos":cursos})
+    ctx={"cursos":cursos}
+    return render(request,'ProyectoCoderApp/cursos.html',ctx)
 
 def entregables(request):
     return HttpResponse("Vista de entregable")
