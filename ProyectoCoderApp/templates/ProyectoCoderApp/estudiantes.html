@@ -10,14 +10,14 @@ Estudiantes - AppCoder
 <section class="bg-light py-5">
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-4">
+            <div class="col-lg-7">
                 <h4>Los estudiantes son:</h4>
                 <ul class="list-group">
                     {% for estudiante in estudiantes %}
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             {{ estudiante.nombre }} 
                             {{ estudiante.apellido }}
-                            {{ estudiante.email }}
+                            <span class="badge bg-success rounded-pill">{{ estudiante.email }}</span>
                         </li>
                     {% endfor %}
                 </ul>
