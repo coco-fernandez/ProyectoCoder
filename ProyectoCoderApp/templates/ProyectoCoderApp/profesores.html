@@ -11,18 +11,18 @@ Profesores - AppCoder
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-4">
-                Los profesores son:
+                <h4>Los Profesores son:</h4>
                 <ul class="list-group">
-                    {% comment %}
-                        {% for curso in cursos %}
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                {{ curso.nombre }} 
-                                <span class="badge bg-primary rounded-pill">{{ curso.comision }}</span>
-                                
-                            </li>
-                        {% endfor %}
-                    {% endcomment %}
+                    {% for estudiante in estudiantes %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            {{ profesores.nombre }} 
+                            {{ profesores.apellido }}
+                            {{ profesores.email }}
+                            {{ profesores.profesion }}
+                        </li>
+                    {% endfor %}
                 </ul>
+                <a href="{% url 'crear_estudiante' %}"> + Ingresar nuevo Estudiante </a>
             </div>
         </div>
     </div>
