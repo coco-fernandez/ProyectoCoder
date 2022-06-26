@@ -1,11 +1,11 @@
 import datetime
-
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
 from .forms import nuevo_curso, nuevo_estudiante, nuevo_profesor
-
 from ProyectoCoderApp.models import Curso, Estudiante, Profesor
+
+
 
 # Create your views here.
 
@@ -57,7 +57,6 @@ def crear_curso(request):    # clase de creacion de curso por formulario de web
         return render(request,'ProyectoCoderApp/formulario_curso.html',{"form":formulario})
 
 
-
 def crear_profesor(request):    # clase de creacion de curso por formulario de web
 
     if request.method=="POST":    #post
@@ -106,6 +105,7 @@ def crear_estudiante(request):    # clase de creacion de curso por formulario de
         formulario=nuevo_estudiante()
         
         return render(request,'ProyectoCoderApp/formulario_estudiante.html',{"form":formulario})
+
 
 
 def entregables(request):
