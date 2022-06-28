@@ -19,7 +19,7 @@ class EstudianteAdmin(admin.ModelAdmin):
 class ProfesorAdmin(admin.ModelAdmin):
 
     list_display = ('nombre', 'apellido', 'profesion')
-    readonly_fields=("profesion",)
+    # readonly_fields=("profesion",)
 
 class EntregableAdmin(admin.ModelAdmin):
 

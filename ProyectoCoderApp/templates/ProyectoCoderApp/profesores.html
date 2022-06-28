@@ -15,7 +15,11 @@ Profesores - AppCoder
                 <ul class="list-group">
                     {% for profesor in profesores %}
                         <!-- <li class="list-group-item d-flex justify-content-between align-items-start"> -->
-                            <li>{{ profesor.nombre }}{{ profesor.apellido }}</li>
+                            <li>{{ profesor.nombre }}
+                              {{ profesor.apellido }}
+                               <br>
+                              Especialidad: {{ profesor.profesion }}
+                            </li>
                             
                             <span class="badge bg-success rounded-pill">{{ profesor.email }}</span>
                         <!-- </li> -->

@@ -13,4 +13,4 @@ class nuevo_profesor(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
     apellido=forms.CharField(max_length=30,label="Apellido")
     email=forms.EmailField()
-    profesion=forms.CharField(max_length=30,label="Profesión")
+    profesion=forms.CharField(max_length=30,label="Especialidad")
