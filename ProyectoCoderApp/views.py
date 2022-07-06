@@ -1,4 +1,5 @@
 import datetime
+from html.entities import html5
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
@@ -128,3 +129,11 @@ def buscar_comision(request):
     
         comisiones=[]    #Curso.objects.all()
         return render(request,'ProyectoCoderApp/buscar_comision.html',{"comisiones":comisiones})
+
+
+
+
+
+
+
+
