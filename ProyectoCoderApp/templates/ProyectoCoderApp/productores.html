@@ -11,21 +11,20 @@ Profesores - AppCoder
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-7">
-                <h4>Los Profesores son:</h4>
+                <h4>Los Productores son:</h4>
                 <ul class="list-group">
-                    {% for profesor in profesores %}
+                    {% for productor in productores %}
                         <!-- <li class="list-group-item d-flex justify-content-between align-items-start"> -->
-                            <li>{{ profesor.nombre }}
-                              {{ profesor.apellido }}
+                            <li>{{ productor.nombre }}
+                              {{ productor.apellido }}
                                <br>
-                              Especialidad: {{ profesor.profesion }}
                             </li>
                             
-                            <span class="badge bg-success rounded-pill">{{ profesor.email }}</span>
+                            <span class="badge bg-success rounded-pill">{{ productor.email }}</span>
                         <!-- </li> -->
                     {% endfor %}
                 </ul>
-                <a href="{% url 'crear_profesor' %}"> + Ingresar nuevo Profesor </a>
+                <a href="{% url 'crear_productor' %}"> + Ingresar nuevo productor </a>
             </div>
         </div>
     </div>

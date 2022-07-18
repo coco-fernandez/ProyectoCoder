@@ -5,32 +5,30 @@ from .models import *
 
 # Register your models here.
 
-class CursoAdmin(admin.ModelAdmin):
+class EstudiosAdmin(admin.ModelAdmin):
 
-    list_display = ('nombre', 'comision')
-    search_fields = ('nombre', 'comision')
-
-
-class EstudianteAdmin(admin.ModelAdmin):
-
-    list_display = ('nombre', 'apellido')
+    list_display = ('nombre', 'ubicacion','cantidad_salas')
+    search_fields = ('nombre', 'ubicacion','cantidad_salas')
 
 
-class ProfesorAdmin(admin.ModelAdmin):
+class BandasAdmin(admin.ModelAdmin):
 
-    list_display = ('nombre', 'apellido', 'profesion')
+    list_display = ('nombre', 'genero', 'cantidad_integrantes')
+
+
+class ProductoresAdmin(admin.ModelAdmin):
+
+    list_display = ('nombre', 'apellido', 'email')
     # readonly_fields=("profesion",)
 
-class EntregableAdmin(admin.ModelAdmin):
 
-    list_display = ('nombre', 'fechaEntrega', 'entregado')
     
 
 
 
-admin.site.register(Curso,CursoAdmin)
-admin.site.register(Estudiante,EstudianteAdmin)
-admin.site.register(Profesor,ProfesorAdmin)
-admin.site.register(Entregable,EntregableAdmin)
+admin.site.register(Estudios,EstudiosAdmin)
+admin.site.register(Bandas,BandasAdmin)
+admin.site.register(Productores,ProductoresAdmin)
+
 
 # admin, admin -> python manage.py createsuperuser

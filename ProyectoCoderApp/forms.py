@@ -1,16 +1,16 @@
 from django import forms
 
-class nuevo_curso(forms.Form):
-    nombre=forms.CharField(max_length=30,label="Curso")
-    comision=forms.IntegerField(min_value=0)
+class nuevo_estudio(forms.Form):
+    nombre=forms.CharField(max_length=30,label="Estudio")
+    ubicacion=forms.CharField(max_length=30,label="Ubicación")
+    cantidad_salas=forms.IntegerField()
     
-class nuevo_estudiante(forms.Form):
+class nuevo_banda(forms.Form):
+    nombre=forms.CharField(max_length=30,label="Nombre")
+    genero=forms.CharField(max_length=30,label="Género")
+    cantidad_integrantes=forms.IntegerField()
+    
+class nuevo_productor(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
     apellido=forms.CharField(max_length=30,label="Apellido")
     email=forms.EmailField()
-    
-class nuevo_profesor(forms.Form):
-    nombre=forms.CharField(max_length=30,label="Nombre")
-    apellido=forms.CharField(max_length=30,label="Apellido")
-    email=forms.EmailField()
-    profesion=forms.CharField(max_length=30,label="Especialidad")

@@ -20,6 +20,5 @@ from ProyectoCoderApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('crearpython/',crear_curso),
     path('',include('ProyectoCoderApp.urls')),
 ]

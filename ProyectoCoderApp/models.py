@@ -3,31 +3,30 @@ from django.db import models
 
 # Create your models here.
 
-class Curso(models.Model):
+class Estudios(models.Model):
 
     # id por defecto
     nombre = models.CharField(max_length=30) # Texto
-    comision = models.IntegerField()
-
-class Estudiante(models.Model):
-
-    # id por defecto
-    nombre = models.CharField(max_length=30) # Texto
-    apellido = models.CharField(max_length=30) # Texto
-    email = models.EmailField(blank=True, null=True) # Email - Opcional
-
-class Profesor(models.Model):
-
-    # id por defecto
-    nombre = models.CharField(max_length=30) # Texto
-    apellido = models.CharField(max_length=30) # Texto
-    email = models.EmailField(blank=True, null=True) # Email - Opcional
-    profesion = models.CharField(max_length=30)
+    ubicacion = models.CharField(max_length=30)
+    cantidad_salas = models.IntegerField()
     class Meta:
-        verbose_name_plural="Profesores"
+        verbose_name_plural="Estudios"
 
-class Entregable(models.Model):
+class Bandas(models.Model):
 
-    nombre = models.CharField(max_length=30)
-    fechaEntrega = models.DateField()
-    entregado = models.BooleanField()
+    # id por defecto
+    nombre = models.CharField(max_length=30) # Texto
+    genero = models.CharField(max_length=30) # Texto
+    cantidad_integrantes = models.IntegerField() # Email - Opcional
+    class Meta:
+        verbose_name_plural="Bandas"
+
+class Productores(models.Model):
+
+    # id por defecto
+    nombre = models.CharField(max_length=30) # Texto
+    apellido = models.CharField(max_length=30) # Texto
+    email = models.EmailField(blank=True, null=True) # Email - Opcional
+    class Meta:
+        verbose_name_plural="Productores"
+

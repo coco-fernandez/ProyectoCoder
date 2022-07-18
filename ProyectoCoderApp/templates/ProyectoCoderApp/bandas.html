@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block tituloPagina %}
-Inicio - AppCoder
+Estudiantes - AppCoder
 {% endblock %}
 
 {% block contenidoPagina %}
@@ -11,17 +11,17 @@ Inicio - AppCoder
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-7">
-                <h4>Los cursos son:</h4>
+                <h4>Las Bandas son:</h4>
                 <ul class="list-group">
-                    {% for curso in cursos %}
+                    {% for banda in bandas %}
                         <li class="list-group-item d-flex justify-content-between align-items-start">
-                            {{ curso.nombre }} 
-                            <span class="badge bg-success rounded-pill">{{ curso.comision }}</span>
-                            
+                            {{ banda.nombre }} 
+                            {{ banda.genero }}
+                            <span class="badge bg-success rounded-pill">{{ banda.cantidad_integrantes }}</span>
                         </li>
                     {% endfor %}
                 </ul>
-                <a href="{% url 'crear_curso' %}"> + Crear nuevo curso </a>
+                <a href="{% url 'crear_banda' %}"> + Ingresar nueva Banda </a>
             </div>
         </div>
     </div>

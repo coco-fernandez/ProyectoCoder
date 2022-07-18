@@ -1,17 +1,18 @@
 from django.contrib import admin
 from django.urls import path,include
+
+from ProyectoCoderApp.models import *
 from .views import *
 
 
 urlpatterns = [
-    path('', inicio, name="inicio"),
-    path('profesores/',profesores,name="profesores"),
-    path('estudiantes/', estudiantes, name="estudiantes"),
-    path('cursos/',cursos,name="cursos"),
-    path('crear_curso/',crear_curso,name="crear_curso"),
-    path('crear_estudiante/',crear_estudiante,name="crear_estudiante"),
-    path('crear_profesor/',crear_profesor,name="crear_profesor"),
-    path('buscar_comision/',buscar_comision,name="buscar_comision"),
-    path('entregables/',entregables,name="entregables"),
+    path('',index,name="index"),
+    path('productores/',productores,name="productores"),
+    path('bandas/', bandas, name="bandas"),
+    path('estudios/',estudios,name="estudios"),
+    path('crear_estudio/',crear_estudio,name="crear_estudio"),
+    path('crear_banda/',crear_banda,name="crear_banda"),
+    path('crear_productor/',crear_productor,name="crear_productor"),
+    # path('buscar_comision/',buscar_comision,name="buscar_comision"),
     # path('base',base),
 ]

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block tituloPagina %}
-Entregables - AppCoder
+Inicio - AppCoder
 {% endblock %}
 
 {% block contenidoPagina %}
@@ -10,17 +10,19 @@ Entregables - AppCoder
 <section class="bg-light py-5">
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-4">
-                Los cursos son:
+            <div class="col-lg-7">
+                <h4>Los Estudios y Salas de ensayo son:</h4>
                 <ul class="list-group">
-                    {% for curso in cursos %}
+                    {% for estudio in estudios %}
                         <li class="list-group-item d-flex justify-content-between align-items-start">
-                            {{ curso.nombre }} 
-                            <span class="badge bg-primary rounded-pill">{{ curso.comision }}</span>
+                            {{ estudio.nombre }} 
+                            {{ estudio.ubicacion }}
+                            <span class="badge bg-success rounded-pill">{{ estudio.cantidad_salas }}</span>
                             
                         </li>
                     {% endfor %}
                 </ul>
+                <a href="{% url 'crear_estudio' %}"> + Crear nuevo estudio </a>
             </div>
         </div>
     </div>

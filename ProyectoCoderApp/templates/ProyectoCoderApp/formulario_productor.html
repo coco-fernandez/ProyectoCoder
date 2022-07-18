@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block tituloPagina %}
-Ingresar Profesor - AppCoder
+Ingresar Productor - AppCoder
 {% endblock %}
 
 {% block contenidoPagina %}
-<h2>Ingresa un Profesor nuevo:</h2>
+<h2>Registrate como Productor!</h2>
 <form action="" method="post">
     {% csrf_token %}
 
@@ -14,6 +14,6 @@ Ingresar Profesor - AppCoder
     {{ form.as_p }}
 
 
-    <input type="submit" value="Ingresar Profesor">
+    <input type="submit" value="Ingresar Productor">
 </form>
 {% endblock %}
