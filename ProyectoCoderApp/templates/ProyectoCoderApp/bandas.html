@@ -51,11 +51,8 @@ Bandas - Estudios Musicales App
                                 <td>{{banda.genero}}</td>
                                 <td>{{banda.cantidad_integrantes}}</td>
                                 <td>
-                                    <a href="" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'editar_banda' banda.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
                                     <a href="{% url 'eliminar_banda' banda.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
-                                    {% comment %}
-                                        {% url 'editar_banda' banda.id %}
-                                    {% endcomment %}
                                 </td>
                             </tr>
                         {% endfor %}

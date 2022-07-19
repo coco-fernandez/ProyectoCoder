@@ -51,7 +51,7 @@ Productores - Estudios Musicales App
                               <td>{{productor.apellido}}</td>
                               <td>{{productor.email}}</td>
                               <td>
-                                  <a href="" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                  <a href="{% url 'editar_productor' productor.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
                                   <a href="{% url 'eliminar_productor' productor.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
                               </td>
                           </tr>

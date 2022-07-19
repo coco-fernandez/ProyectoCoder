@@ -35,6 +35,30 @@ def eliminar_estudio(request,estudio_id):
 
     return redirect("estudios")
 
+def editar_estudio(request,estudio_id):
+
+    estudio = Estudios.objects.get(id=estudio_id)
+
+    if request.method == "POST":
+
+        formulario = nuevo_estudio(request.POST)
+
+        if formulario.is_valid():
+            
+            info_estudio = formulario.cleaned_data
+            
+            estudio.nombre = info_estudio["nombre"]
+            estudio.ubicacion = info_estudio["ubicacion"]
+            estudio.cantidad_salas = info_estudio["cantidad_salas"]
+            estudio.save()
+
+            return redirect("estudios")
+
+    # get
+    formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas})
+    
+    return render(request,"ProyectoCoderApp/formulario_estudio.html",{"form":formulario})
+
 def bandas(request):
     if request.method == "POST":
 
@@ -55,6 +79,30 @@ def eliminar_banda(request,banda_id):
 
     return redirect("bandas")
 
+def editar_banda(request,banda_id):
+
+    banda = Bandas.objects.get(id=banda_id)
+
+    if request.method == "POST":
+
+        formulario = nuevo_banda(request.POST)
+
+        if formulario.is_valid():
+            
+            info_banda = formulario.cleaned_data
+            
+            banda.nombre = info_banda["nombre"]
+            banda.genero = info_banda["genero"]
+            banda.cantidad_integrantes = info_banda["cantidad_integrantes"]
+            banda.save()
+
+            return redirect("bandas")
+
+    # get
+    formulario = nuevo_banda(initial={"nombre":banda.nombre, "genero":banda.genero, "cantidad_integrantes": banda.cantidad_integrantes})
+    
+    return render(request,"ProyectoCoderApp/formulario_banda.html",{"form":formulario})
+
 def productores(request):
     if request.method == "POST":
 
@@ -74,6 +122,30 @@ def eliminar_productor(request,productor_id):
     productor.delete()
 
     return redirect("productores")
+
+def editar_productor(request,productor_id):
+
+    productor = Productores.objects.get(id=productor_id)
+
+    if request.method == "POST":
+
+        formulario = nuevo_productor(request.POST)
+
+        if formulario.is_valid():
+            
+            info_productor = formulario.cleaned_data
+            
+            productor.nombre = info_productor["nombre"]
+            productor.apellido = info_productor["apellido"]
+            productor.email = info_productor["email"]
+            productor.save()
+
+            return redirect("productores")
+
+    # get
+    formulario = nuevo_productor(initial={"nombre":productor.nombre, "apellido":productor.apellido, "email": productor.email})
+    
+    return render(request,"ProyectoCoderApp/formulario_productor.html",{"form":formulario})
 
 def crear_estudio(request):    # clase de creacion de curso por formulario de web
 
