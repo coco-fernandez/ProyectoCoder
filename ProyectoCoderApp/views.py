@@ -28,6 +28,13 @@ def estudios(request):
 
     return render(request,"ProyectoCoderApp/estudios.html",{"estudios":estudios})
 
+def eliminar_estudio(request,estudio_id):
+
+    estudio = Estudios.objects.get(id=estudio_id)
+    estudio.delete()
+
+    return redirect("estudios")
+
 def bandas(request):
     if request.method == "POST":
 
@@ -60,6 +67,13 @@ def productores(request):
     productores = Productores.objects.all()
 
     return render(request,"ProyectoCoderApp/productores.html",{"productores":productores})
+
+def eliminar_productor(request,productor_id):
+
+    productor = Productores.objects.get(id=productor_id)
+    productor.delete()
+
+    return redirect("productores")
 
 def crear_estudio(request):    # clase de creacion de curso por formulario de web
 
