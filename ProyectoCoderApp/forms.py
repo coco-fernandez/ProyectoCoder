@@ -1,7 +1,7 @@
 from django import forms
 
 class nuevo_estudio(forms.Form):
-    nombre=forms.CharField(max_length=30,label="Estudio")
+    nombre=forms.CharField(max_length=30,label="Nombre")
     ubicacion=forms.CharField(max_length=30,label="Ubicación")
     cantidad_salas=forms.IntegerField()
     

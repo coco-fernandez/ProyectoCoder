@@ -1,10 +1,12 @@
 import datetime
 from html.entities import html5
+from urllib import request
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
 from .forms import nuevo_banda, nuevo_estudio, nuevo_productor
 from ProyectoCoderApp.models import Bandas, Estudios, Productores
+from django.db.models import Q
 
 
 
@@ -14,19 +16,50 @@ def index(request):
     return render(request,"ProyectoCoderApp/index.html",)
 
 def estudios(request):
-    estudios=Estudios.objects.all()
-    ctx={"estudios":estudios}
-    return render(request,'ProyectoCoderApp/estudios.html',ctx)
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            estudios = Estudios.objects.filter( Q(nombre__icontains=search) | Q(genero__icontains=search) ).values()                
+            return render(request,"ProyectoCoderApp/estudios.html",{"estudios":estudios, "search":True, "busqueda":search})
+
+    estudios = Estudios.objects.all()
+
+    return render(request,"ProyectoCoderApp/estudios.html",{"estudios":estudios})
 
 def bandas(request):
-    bandas=Bandas.objects.all()
-    ctx={"bandas":bandas}
-    return render(request,'ProyectoCoderApp/bandas.html',ctx)
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            bandas = Bandas.objects.filter( Q(nombre__icontains=search) | Q(genero__icontains=search) ).values()                
+            return render(request,"ProyectoCoderApp/bandas.html",{"bandas":bandas, "search":True, "busqueda":search})
+
+    bandas = Bandas.objects.all()
+
+    return render(request,"ProyectoCoderApp/bandas.html",{"bandas":bandas})
+
+def eliminar_banda(request,banda_id):
+
+    banda = Bandas.objects.get(id=banda_id)
+    banda.delete()
+
+    return redirect("bandas")
 
 def productores(request):
-    productores=Productores.objects.all()
-    ctx={"productores":productores}
-    return render(request,'ProyectoCoderApp/productores.html',ctx)
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            productores = Productores.objects.filter( Q(nombre__icontains=search) | Q(apellido__icontains=search) ).values()                
+            return render(request,"ProyectoCoderApp/productores.html",{"productores":productores, "search":True, "busqueda":search})
+
+    productores = Productores.objects.all()
+
+    return render(request,"ProyectoCoderApp/productores.html",{"productores":productores})
 
 def crear_estudio(request):    # clase de creacion de curso por formulario de web
 
@@ -107,26 +140,4 @@ def crear_banda(request):    # clase de creacion de curso por formulario de web
 
 def base (request):
     return render(request,'ProyectoCoderApp/base.html',{})
-
-def buscar_comision(request):
-    
-    if request.method=="POST":
-        
-        comision=request.POST["comision"]
-        
-        comisiones=Curso.objects.filter(comision__icontains=comision)
-        
-        return render(request,'ProyectoCoderApp/buscar_comision.html',{"comisiones":comisiones})
-    
-    else:
-    
-        comisiones=[]    #Curso.objects.all()
-        return render(request,'ProyectoCoderApp/buscar_comision.html',{"comisiones":comisiones})
-
-
-
-
-
-
-
 

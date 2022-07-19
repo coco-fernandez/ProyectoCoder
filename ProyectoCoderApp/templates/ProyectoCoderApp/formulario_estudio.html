@@ -2,18 +2,37 @@
 {% load static %}
 
 {% block tituloPagina %}
-Crear curso - AppCoder
+Crear curso - Estudios Musicales App
 {% endblock %}
 
 {% block contenidoPagina %}
-<h2>Registra una Sala de ensayo / Estudio nuevo:</h2>
-<form action="" method="post">
-    {% csrf_token %}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h2>Formulario Estudios:</h2>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
 
+                <div class="card">
+                    <div class="card-header text-center">
+                        
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                        
+                            <!-- <p>Curso: <input type="text" name="nombre" id="" maxlength="30"> </p>
+                            <p>Comision: <input type="number" name="comision" id="" min="0"> </p> -->
+                        
+                            {{ form.as_p }}
+                        
+                            <input type="submit" class="btn btn-primary" value="Registrar Estudio">
+                        </form>
+                    </div>
+                </div>
 
-    {{ form.as_p}}
-
-
-    <input type="submit" value="Crear Estudio">
-</form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
