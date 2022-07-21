@@ -23,10 +23,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'estudios' %}">Estudios y Salas de ensayo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'bandas' %}">Bandas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'productores' %}">Productores</a></li>
+                                                
+                        {% if user.is_authenticated %}
+                            {% if user.is_staff %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'estudios' %}">Estudios y Salas de Ensayo</a></li>
+                            {% endif %}
+                        {% endif %}
                         
+                        <li class="nav-item"><a class="nav-link" href="{% url 'bandas' %}">Bandas</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'productores' %}">Productores</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'estudios' %}">Estudios y Salas de Ensayo</a></li>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                            <img class="rounded" src="{{url}}" alt="" srcset="" style="height: 40px;">
+                            <!-- <i class="bi bi-person-circle text-light"></i> -->
+                            <li class="nav-item"><p class="text-light my-2 mx-3"> Hola, <b>{{user.username}}</b>!</p></li>
+                            <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="btn btn-primary mx-3" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                            <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'register' %}">Registrarse</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

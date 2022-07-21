@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class nuevo_estudio(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
@@ -14,3 +16,4 @@ class nuevo_productor(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
     apellido=forms.CharField(max_length=30,label="Apellido")
     email=forms.EmailField()
+    
