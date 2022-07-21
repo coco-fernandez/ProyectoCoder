@@ -12,6 +12,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 
@@ -81,7 +83,7 @@ def logout_request(request):
     return redirect("index")
 
 
-
+@login_required
 def estudios(request):
     if request.method == "POST":
 
@@ -94,7 +96,7 @@ def estudios(request):
     estudios = Estudios.objects.all()
 
     return render(request,"ProyectoCoderApp/estudios.html",{"estudios":estudios})
-
+@login_required
 def crear_estudio(request):    # clase de creacion de curso por formulario de web
 
     if request.method=="POST":    #post
@@ -118,14 +120,14 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
         formulario=nuevo_estudio()
         
         return render(request,'ProyectoCoderApp/formulario_estudio.html',{"form":formulario})
-
+@login_required
 def eliminar_estudio(request,estudio_id):
 
     estudio = Estudios.objects.get(id=estudio_id)
     estudio.delete()
 
     return redirect("estudios")
-
+@login_required
 def editar_estudio(request,estudio_id):
 
     estudio = Estudios.objects.get(id=estudio_id)
@@ -165,6 +167,7 @@ def bandas(request):
 
     return render(request,"ProyectoCoderApp/bandas.html",{"bandas":bandas})
 
+@login_required
 def crear_banda(request):    # clase de creacion de curso por formulario de web
 
     if request.method=="POST":    #post
@@ -188,14 +191,14 @@ def crear_banda(request):    # clase de creacion de curso por formulario de web
         formulario=nuevo_banda()
         
         return render(request,'ProyectoCoderApp/formulario_banda.html',{"form":formulario})
-
+@login_required
 def eliminar_banda(request,banda_id):
 
     banda = Bandas.objects.get(id=banda_id)
     banda.delete()
 
     return redirect("bandas")
-
+@login_required
 def editar_banda(request,banda_id):
 
     banda = Bandas.objects.get(id=banda_id)

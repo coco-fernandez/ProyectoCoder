@@ -39,7 +39,7 @@
                         {% if user.is_authenticated %}
                             <img class="rounded" src="{{url}}" alt="" srcset="" style="height: 40px;">
                             <!-- <i class="bi bi-person-circle text-light"></i> -->
-                            <li class="nav-item"><p class="text-light my-2 mx-3"> Hola, <b>{{user.username}}</b>!</p></li>
+                            <li class="nav-item"><p class="text-light my-2 mx-3"><i class="bi bi-person-circle"></i> Hola, <b>{{user.username}}</b>!</p></li>
                             <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         {% else %}
                             <li class="nav-item"><a class="btn btn-primary mx-3" href="{% url 'login' %}">Iniciar Sesión</a></li>
