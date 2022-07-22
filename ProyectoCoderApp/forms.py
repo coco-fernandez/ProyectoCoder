@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Avatar
 
 class nuevo_estudio(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
@@ -50,3 +51,12 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','first_name', 'last_name', 'email', 'password1', 'password2', ]
+        
+    
+class AvatarForm(forms.Form):
+
+    imagen = forms.ImageField(label="Imagen", required=False)
+
+    class Meta:
+        model = Avatar
+        fields = ['imagen']

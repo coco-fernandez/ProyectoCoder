@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
 from .forms import UserEditForm, nuevo_banda, nuevo_estudio, nuevo_productor
-from ProyectoCoderApp.models import Bandas, Estudios, Productores
+from ProyectoCoderApp.models import Avatar, Bandas, Estudios, Productores
 from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -21,6 +21,18 @@ from .forms import *
 # Create your views here.
 
 def index(request):
+    nombre = "Juan"
+    hoy = datetime.datetime.now()
+    notas = [4,9,7,8,5,10]
+    diccionario = {"nombre":"Juan","apellido":"Perez","edad":20}
+    
+    if request.user.is_authenticated:
+        try:
+            avatar = Avatar.objects.get(usuario=request.user)
+            url = avatar.imagen.url
+        except:
+            url = "/media/avatar/generica.jpg"
+        return render(request,"ProyectoCoderApp/index.html",{"mi_nombre":nombre,"dia_hora":hoy,"notas":notas, "url":url})
     return render(request,"ProyectoCoderApp/index.html",)
 
 def base (request):
@@ -55,8 +67,8 @@ def register_request(request):
 
     if request.method == "POST":
         
-        # form = UserCreationForm(request.POST)
-        form = UserRegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
+        # form = UserRegisterForm(request.POST)
 
         if form.is_valid():
 
@@ -75,8 +87,8 @@ def register_request(request):
 
         return render(request,"ProyectoCoderApp/register.html",{"form":form})
 
-    # form = UserCreationForm()
-    form = UserRegisterForm()
+    form = UserCreationForm()
+    # form = UserRegisterForm()
 
     return render(request,"ProyectoCoderApp/register.html",{"form":form})
 
@@ -110,6 +122,33 @@ def editar_perfil(request):
         form = UserEditForm(initial={"email":user.email, "first_name":user.first_name, "last_name":user.last_name})
 
     return render(request,"ProyectoCoderApp/editar_perfil.html",{"form":form})
+
+@login_required
+def agregar_avatar(request):
+    
+    if request.method == "POST":
+            
+        form = AvatarForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            user = User.objects.get(username=request.user.username) # usuario con el que estamos loggueados
+
+            avatar = Avatar(usuario=user, imagen=form.cleaned_data["imagen"])
+
+            avatar.save()
+
+            # avatar = Avatar()
+            # avatar.usuario = request.user
+            # avatar.imagen = form.cleaned_data["imagen"]
+            # avatar.save()
+
+            return redirect("inicio")
+
+    else:
+        form = AvatarForm()
+    
+    return render(request,"ProyectoCoderApp/agregar_avatar.html",{"form":form})
 
 
 

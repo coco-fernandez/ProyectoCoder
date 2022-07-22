@@ -22,6 +22,7 @@ class ProductoresAdmin(admin.ModelAdmin):
     # readonly_fields=("profesion",)
 
 
+
     
 
 
@@ -29,6 +30,7 @@ class ProductoresAdmin(admin.ModelAdmin):
 admin.site.register(Estudios,EstudiosAdmin)
 admin.site.register(Bandas,BandasAdmin)
 admin.site.register(Productores,ProductoresAdmin)
+admin.site.register(Avatar)
 
 
 # admin, admin -> python manage.py createsuperuser
