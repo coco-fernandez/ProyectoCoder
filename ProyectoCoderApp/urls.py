@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout', logout_request, name="logout"),
     path('register', register_request, name="register"),
     path('editar_perfil', editar_perfil, name="editar_perfil"),
+    path('agregar_avatar', agregar_avatar, name="agregar_avatar"),
     
     
     path('productores/',productores,name="productores"),
@@ -27,6 +28,8 @@ urlpatterns = [
     path('eliminar_estudio/<estudio_id>', eliminar_estudio, name="eliminar_estudio"),
     path('editar_estudio/<estudio_id>', editar_estudio, name="editar_estudio"),
     path('crear_estudio/',crear_estudio,name="crear_estudio"),
+    
+    path('no_page/', no_page, name="no_page"),
     
     
     

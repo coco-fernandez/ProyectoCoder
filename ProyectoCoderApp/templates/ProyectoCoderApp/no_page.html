@@ -1,0 +1,22 @@
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+No_Page - Estudios Musicales App
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <h1>No hay página aún</h1>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <a class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" href="{% url 'index' %}"> <i class="bi bi-plus-lg"></i> Regresar al Inicio</a>
+            
+        </div>
+    </div>
+        
+</section>
+{% endblock %}

@@ -362,4 +362,5 @@ def editar_productor(request,productor_id):
     return render(request,"ProyectoCoderApp/formulario_productor.html",{"form":formulario})
 
 
-
+def no_page(request):
+    return render(request,"ProyectoCoderApp/no_page.html",{})
