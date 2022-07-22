@@ -4,7 +4,7 @@ from urllib import request
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
-from .forms import nuevo_banda, nuevo_estudio, nuevo_productor
+from .forms import UserEditForm, nuevo_banda, nuevo_estudio, nuevo_productor
 from ProyectoCoderApp.models import Bandas, Estudios, Productores
 from django.db.models import Q
 from django.views.generic import ListView
@@ -14,6 +14,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from .forms import *
 
 
 
@@ -54,7 +55,8 @@ def register_request(request):
 
     if request.method == "POST":
         
-        form = UserCreationForm(request.POST)
+        # form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
         if form.is_valid():
 
@@ -74,13 +76,41 @@ def register_request(request):
         return render(request,"ProyectoCoderApp/register.html",{"form":form})
 
     # form = UserCreationForm()
-    form = UserCreationForm()
+    form = UserRegisterForm()
 
     return render(request,"ProyectoCoderApp/register.html",{"form":form})
 
 def logout_request(request):
     logout(request)
     return redirect("index")
+
+@login_required
+def editar_perfil(request):
+
+    user = request.user # usuario con el que estamos loggueados
+
+    if request.method == "POST":
+        
+        form = UserEditForm(request.POST) # cargamos datos llenados
+
+        if form.is_valid():
+
+            info = form.cleaned_data
+            user.email = info["email"]
+            user.first_name = info["first_name"]
+            user.last_name = info["last_name"]
+            # user.password = info["password1"]
+
+            user.save()
+
+            return redirect("index")
+
+
+    else:
+        form = UserEditForm(initial={"email":user.email, "first_name":user.first_name, "last_name":user.last_name})
+
+    return render(request,"ProyectoCoderApp/editar_perfil.html",{"form":form})
+
 
 
 @login_required
@@ -120,14 +150,14 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
         formulario=nuevo_estudio()
         
         return render(request,'ProyectoCoderApp/formulario_estudio.html',{"form":formulario})
-@login_required
+@staff_member_required
 def eliminar_estudio(request,estudio_id):
 
     estudio = Estudios.objects.get(id=estudio_id)
     estudio.delete()
 
     return redirect("estudios")
-@login_required
+@staff_member_required
 def editar_estudio(request,estudio_id):
 
     estudio = Estudios.objects.get(id=estudio_id)
@@ -166,7 +196,6 @@ def bandas(request):
     bandas = Bandas.objects.all()
 
     return render(request,"ProyectoCoderApp/bandas.html",{"bandas":bandas})
-
 @login_required
 def crear_banda(request):    # clase de creacion de curso por formulario de web
 
@@ -191,14 +220,14 @@ def crear_banda(request):    # clase de creacion de curso por formulario de web
         formulario=nuevo_banda()
         
         return render(request,'ProyectoCoderApp/formulario_banda.html',{"form":formulario})
-@login_required
+@staff_member_required
 def eliminar_banda(request,banda_id):
 
     banda = Bandas.objects.get(id=banda_id)
     banda.delete()
 
     return redirect("bandas")
-@login_required
+@staff_member_required
 def editar_banda(request,banda_id):
 
     banda = Bandas.objects.get(id=banda_id)
@@ -224,7 +253,7 @@ def editar_banda(request,banda_id):
     return render(request,"ProyectoCoderApp/formulario_banda.html",{"form":formulario})
 
 
-
+@login_required
 def productores(request):
     if request.method == "POST":
 
@@ -237,7 +266,7 @@ def productores(request):
     productores = Productores.objects.all()
 
     return render(request,"ProyectoCoderApp/productores.html",{"productores":productores})
-
+@login_required
 def crear_productor(request):    # clase de creacion de curso por formulario de web
 
     if request.method=="POST":    #post
@@ -261,14 +290,14 @@ def crear_productor(request):    # clase de creacion de curso por formulario de 
         formulario=nuevo_productor()
         
         return render(request,'ProyectoCoderApp/formulario_productor.html',{"form":formulario})
-
+@staff_member_required
 def eliminar_productor(request,productor_id):
 
     productor = Productores.objects.get(id=productor_id)
     productor.delete()
 
     return redirect("productores")
-
+@staff_member_required
 def editar_productor(request,productor_id):
 
     productor = Productores.objects.get(id=productor_id)

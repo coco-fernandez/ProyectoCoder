@@ -10,6 +10,9 @@ urlpatterns = [
     path('login', login_request, name="login"),
     path('logout', logout_request, name="logout"),
     path('register', register_request, name="register"),
+    path('editar_perfil', editar_perfil, name="editar_perfil"),
+    
+    
     path('productores/',productores,name="productores"),
     path('crear_productor/',crear_productor,name="crear_productor"),
     path('eliminar_productor/<productor_id>', eliminar_productor, name="eliminar_productor"),
