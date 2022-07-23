@@ -99,11 +99,16 @@ def logout_request(request):
 @login_required
 def editar_perfil(request):
 
-    user = request.user # usuario con el que estamos loggueados
+    user = request.user # usuario con el que estamos loggueado
+    try:
+        avatar = Avatar.objects.get(usuario=user)
+    except:
+        avatar = Avatar(usuario=user)
+        avatar.save()
 
     if request.method == "POST":
         
-        form = UserEditForm(request.POST) # cargamos datos llenados
+        form = UserEditForm(request.POST,request.FILES) # cargamos datos llenados
 
         if form.is_valid():
 
@@ -119,7 +124,7 @@ def editar_perfil(request):
 
 
     else:
-        form = UserEditForm(initial={"email":user.email, "first_name":user.first_name, "last_name":user.last_name})
+        form = UserEditForm(initial={"email":user.email, "first_name":user.first_name, "last_name":user.last_name, "imagen":avatar.imagen})
 
     return render(request,"ProyectoCoderApp/editar_perfil.html",{"form":form})
 
