@@ -25,6 +25,7 @@ class UserEditForm(UserCreationForm):
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
     email = forms.EmailField(label="Email")
+    imagen = forms.ImageField(label="Imagen", required=False)
         
     password1 = forms.CharField(label="Ingrese contraseña", widget=forms.PasswordInput, required=False) # la contraseña no se vea
     password2 = forms.CharField(label="Reingrese contraseña", widget=forms.PasswordInput, required=False)

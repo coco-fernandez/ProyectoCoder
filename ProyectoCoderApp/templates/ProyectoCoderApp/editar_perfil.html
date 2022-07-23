@@ -13,10 +13,9 @@ Editar Perfil - Estudios Musicales App
         <br>
         <h5>Estás editando al usuario "{{user.username}}":</h5>
         <br>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
-            <a class="text-decoration-none" href="{% url 'agregar_avatar' %}">Agrega un Avatar a tu perfil</a>
             <br><br>
             <button type="submit">Guardar</button>
         </form>
