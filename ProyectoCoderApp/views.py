@@ -143,7 +143,7 @@ def agregar_avatar(request):
             # avatar.imagen = form.cleaned_data["imagen"]
             # avatar.save()
 
-            return redirect("inicio")
+            return redirect("index")
 
     else:
         form = AvatarForm()
@@ -364,3 +364,6 @@ def editar_productor(request,productor_id):
 
 def no_page(request):
     return render(request,"ProyectoCoderApp/no_page.html",{})
+
+def acerca_de(request):
+    return render(request,"ProyectoCoderApp/acerca_de.html",{})
