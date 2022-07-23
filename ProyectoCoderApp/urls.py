@@ -12,7 +12,7 @@ urlpatterns = [
     path('register', register_request, name="register"),
     path('editar_perfil', editar_perfil, name="editar_perfil"),
     path('agregar_avatar', agregar_avatar, name="agregar_avatar"),
-    path('acerca_de', acerca_de, name="acerca_de"),
+    path('about', acerca_de, name="acerca_de"),
     
     
     path('productores/',productores,name="productores"),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('editar_banda/<banda_id>', editar_banda, name="editar_banda"),
     
     path('estudios/',estudios,name="estudios"),
+    path('detalle/<estudio_id>', detalle_estudio, name="detalle_estudio"),
     path('eliminar_estudio/<estudio_id>', eliminar_estudio, name="eliminar_estudio"),
     path('editar_estudio/<estudio_id>', editar_estudio, name="editar_estudio"),
     path('crear_estudio/',crear_estudio,name="crear_estudio"),

@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from httplib2 import Http
 from .forms import UserEditForm, nuevo_banda, nuevo_estudio, nuevo_productor
-from ProyectoCoderApp.models import Avatar, Bandas, Estudios, Productores
+from ProyectoCoderApp.models import Avatar, Bandas, Estudios, Productores, DetalleEstudios
 from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -227,7 +227,7 @@ def editar_estudio(request,estudio_id):
     # get
     formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas})
     
-    return render(request,"ProyectoCoderApp/formulario_estudio.html",{"form":formulario})
+    return render(request,"ProyectoCoderApp/detalle_estudio.html",{"form":formulario})
 
 
 
@@ -375,3 +375,28 @@ def no_page(request):
 
 def acerca_de(request):
     return render(request,"ProyectoCoderApp/acerca_de.html",{})
+
+@login_required
+def detalle_estudio(request,estudio_id):
+
+    estudio = Estudios.objects.get(id=estudio_id)
+
+    if request.method == "POST":
+
+        formulario = detalle_estudio(request.POST)
+
+        if formulario.is_valid():
+            
+            info_estudio = formulario.cleaned_data
+            
+            estudio.nombre = info_estudio["nombre"]
+            estudio.ubicacion = info_estudio["ubicacion"]
+            estudio.cantidad_salas = info_estudio["cantidad_salas"]
+            estudio.save()
+
+            return redirect("estudios")
+
+    # get
+    formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas})
+    
+    return render(request,"ProyectoCoderApp/detalle_estudio.html",{"form":formulario})

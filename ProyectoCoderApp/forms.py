@@ -8,6 +8,11 @@ class nuevo_estudio(forms.Form):
     ubicacion=forms.CharField(max_length=30,label="Ubicación")
     cantidad_salas=forms.IntegerField()
     
+class detalle_estudio(forms.Form):
+    nombre=forms.CharField(max_length=30,label="Nombre")
+    ubicacion=forms.CharField(max_length=30,label="Ubicación")
+    cantidad_salas=forms.IntegerField()
+    
 class nuevo_banda(forms.Form):
     nombre=forms.CharField(max_length=30,label="Nombre")
     genero=forms.CharField(max_length=30,label="Género")
