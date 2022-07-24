@@ -16,14 +16,14 @@ Detalles - Estudios Musicales App
         <p><b>Ubicación: </b> {{ estudios.ubicacion }} </p>
         <p><b>Cantidad de Salas: </b> {{ estudios.cantidad_salas }} </p>
         <p><b>Detalle: </b> {{ estudios.detalle }} </p>
-        <br><br>
+        <br>
 
         {% if estudios.imagen %}
         <img class="img-fluid rounded mb-4 mb-lg-0" src="{{estudios.imagen.url}}" alt="" width="400" height="400">
         {% endif %}
 
 
-        <br>
+        <br><br>
     <a href="{% url 'estudios' %}">Volver a lista de Estudios y Salas</a>
     </div>
         

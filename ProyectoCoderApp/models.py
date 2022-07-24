@@ -15,6 +15,7 @@ class Estudios(models.Model):
 
     class Meta:
         verbose_name_plural="Estudios"
+        
 class Bandas(models.Model):
 
     # id por defecto
