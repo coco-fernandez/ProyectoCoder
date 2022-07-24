@@ -228,10 +228,6 @@ def editar_estudio(request,estudio_id):
     formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas})
     
     return render(request,"ProyectoCoderApp/formulario_estudio.html",{"form":formulario})
-@login_required
-def detalle_estudio(request,estudio_id):
-    
-    return render(request,"ProyectoCoderApp/detalle_estudio.html",{})
 
 
 
