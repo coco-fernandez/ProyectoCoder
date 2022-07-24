@@ -12,8 +12,6 @@ class Estudios(models.Model):
     cantidad_salas = models.IntegerField()
     class Meta:
         verbose_name_plural="Estudios"
-        
-        
 
 class Bandas(models.Model):
 
