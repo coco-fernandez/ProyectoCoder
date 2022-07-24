@@ -184,7 +184,7 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
             
             info_estudio=formulario.cleaned_data
         
-            estudio=Estudios(nombre=info_estudio["nombre"],ubicacion=info_estudio["ubicacion"],cantidad_salas=info_estudio["cantidad_salas"])
+            estudio=Estudios(nombre=info_estudio["nombre"],ubicacion=info_estudio["ubicacion"],cantidad_salas=info_estudio["cantidad_salas"], detalle=info_estudio["detalle"])
             
             estudio.save()    #guarda en la DB
             
