@@ -227,12 +227,19 @@ def editar_estudio(request,estudio_id):
             estudio.ubicacion = info_estudio["ubicacion"]
             estudio.cantidad_salas = info_estudio["cantidad_salas"]
             estudio.detalle = info_estudio["detalle"]
+            estudio.imagen = info_estudio["imagen"]
             estudio.save()
 
             return redirect("estudios")
 
     # get
-    formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas, "detalle":estudio.detalle})
+    formulario = nuevo_estudio(initial={
+        "nombre":estudio.nombre, 
+        "ubicacion":estudio.ubicacion, 
+        "cantidad_salas": estudio.cantidad_salas, 
+        "detalle":estudio.detalle,
+        "imagen":estudio.imagen
+        })
     
     return render(request,"ProyectoCoderApp/formulario_estudio.html",{"form":formulario})
 
@@ -261,7 +268,11 @@ def crear_banda(request):    # clase de creacion de curso por formulario de web
             
             info_banda=formulario.cleaned_data
         
-            banda=Bandas(nombre=info_banda["nombre"],genero=info_banda["genero"],cantidad_integrantes=info_banda["cantidad_integrantes"])
+            banda=Bandas(
+                nombre=info_banda["nombre"],
+                genero=info_banda["genero"],
+                cantidad_integrantes=info_banda["cantidad_integrantes"]
+                )
             
             banda.save()    #guarda en la DB
             
@@ -302,7 +313,10 @@ def editar_banda(request,banda_id):
             return redirect("bandas")
 
     # get
-    formulario = nuevo_banda(initial={"nombre":banda.nombre, "genero":banda.genero, "cantidad_integrantes": banda.cantidad_integrantes})
+    formulario = nuevo_banda(initial={
+        "nombre":banda.nombre, 
+        "genero":banda.genero, 
+        "cantidad_integrantes": banda.cantidad_integrantes})
     
     return render(request,"ProyectoCoderApp/formulario_banda.html",{"form":formulario})
 
