@@ -220,12 +220,13 @@ def editar_estudio(request,estudio_id):
             estudio.nombre = info_estudio["nombre"]
             estudio.ubicacion = info_estudio["ubicacion"]
             estudio.cantidad_salas = info_estudio["cantidad_salas"]
+            estudio.detalle = info_estudio["detalle"]
             estudio.save()
 
             return redirect("estudios")
 
     # get
-    formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas})
+    formulario = nuevo_estudio(initial={"nombre":estudio.nombre, "ubicacion":estudio.ubicacion, "cantidad_salas": estudio.cantidad_salas, "detalle":estudio.detalle})
     
     return render(request,"ProyectoCoderApp/formulario_estudio.html",{"form":formulario})
 
