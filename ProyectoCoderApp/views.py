@@ -117,7 +117,6 @@ def editar_perfil(request):
             user.first_name = info["first_name"]
             user.last_name = info["last_name"]
             avatar.imagen = info["imagen"]
-            # user.password = info["password1"]
 
             user.save()
             avatar.save()
@@ -127,8 +126,8 @@ def editar_perfil(request):
             return render(request,"ProyectoCoderApp/editar_perfil.html",{"form":form})
 
     else:
-        form = UserEditForm(initial={"email":user.email, "first_name":user.first_name, "last_name":user.last_name, "imagen":avatar.imagen})
-
+        form = UserEditForm(initial={"email":user.email,"first_name":user.first_name,"last_name":user.last_name, 
+            "imagen":avatar.imagen})
     return render(request,"ProyectoCoderApp/editar_perfil.html",{"form":form})
 
 @login_required
