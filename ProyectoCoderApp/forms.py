@@ -8,6 +8,8 @@ class nuevo_estudio(forms.Form):
     ubicacion=forms.CharField(max_length=30,label="Ubicación")
     cantidad_salas=forms.IntegerField()
     detalle=forms.CharField(max_length=500)
+    imagen=forms.ImageField(label="Imagen",required=False)
+    
 
     
 class nuevo_banda(forms.Form):

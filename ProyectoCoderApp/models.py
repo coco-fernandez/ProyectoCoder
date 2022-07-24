@@ -11,10 +11,10 @@ class Estudios(models.Model):
     ubicacion = models.CharField(max_length=30)
     cantidad_salas = models.IntegerField()
     detalle = models.CharField(max_length=500)
+    imagen = models.ImageField("Imagen", upload_to="estudios/",null=True,blank=True)
 
     class Meta:
         verbose_name_plural="Estudios"
-
 class Bandas(models.Model):
 
     # id por defecto

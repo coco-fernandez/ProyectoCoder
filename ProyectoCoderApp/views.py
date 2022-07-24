@@ -167,7 +167,7 @@ def estudios(request):
         search = request.POST["search"]
 
         if search != "":
-            estudios = Estudios.objects.filter( Q(nombre__icontains=search) | Q(genero__icontains=search) ).values()                
+            estudios = Estudios.objects.filter( Q(nombre__icontains=search) | Q(genero__icontains=search) ) # .values()                
             return render(request,"ProyectoCoderApp/estudios.html",{"estudios":estudios, "search":True, "busqueda":search})
 
     estudios = Estudios.objects.all()
@@ -184,7 +184,13 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
             
             info_estudio=formulario.cleaned_data
         
-            estudio=Estudios(nombre=info_estudio["nombre"],ubicacion=info_estudio["ubicacion"],cantidad_salas=info_estudio["cantidad_salas"], detalle=info_estudio["detalle"])
+            estudio=Estudios(
+                nombre=info_estudio["nombre"],
+                ubicacion=info_estudio["ubicacion"],
+                cantidad_salas=info_estudio["cantidad_salas"], 
+                detalle=info_estudio["detalle"],
+                imagen=info_estudio["imagen"]
+                )
             
             estudio.save()    #guarda en la DB
             
