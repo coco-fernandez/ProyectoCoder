@@ -28,7 +28,7 @@ urlpatterns = [
     path('estudios/',estudios,name="estudios"),
     path('eliminar_estudio/<estudio_id>', eliminar_estudio, name="eliminar_estudio"),
     path('editar_estudio/<estudio_id>', editar_estudio, name="editar_estudio"),
-    path('detalle_estudio/<estudio_id>', detalle_estudio, name="detalle_estudio"),
+    path('estudios/<pk>', EstudioDetail.as_view(), name="estudio_detail"),
     path('crear_estudio/',crear_estudio,name="crear_estudio"),
     
     path('no_page/', no_page, name="no_page"),

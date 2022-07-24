@@ -10,6 +10,7 @@ class Estudios(models.Model):
     nombre = models.CharField(max_length=30) # Texto
     ubicacion = models.CharField(max_length=30)
     cantidad_salas = models.IntegerField()
+
     class Meta:
         verbose_name_plural="Estudios"
 

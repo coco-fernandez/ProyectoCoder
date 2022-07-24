@@ -1,0 +1,23 @@
+{% extends 'ProyectoCoderApp/base.html' %}
+{% load static %}
+
+{% block tituloPagina %}
+Detalles - Estudios Musicales App
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<section class="bg-light py-5">
+    
+    <div class="container px-5">
+        <h2>Detalles</h2>
+        <br>
+        <p><b>Nombre: </b> {{ estudios.nombre }} </p>
+        <p><b>Ubicación </b> {{ estudios.ubicacion }} </p>
+        <p><b>Cantidad de Salas: </b> {{ estudios.cantidad_salas }} </p>
+
+    <a href="{% url 'estudios' %}">Volver a lista de Estudios y Salas</a>
+    </div>
+        
+</section>
+{% endblock %}

@@ -379,3 +379,10 @@ def no_page(request):
 
 def acerca_de(request):
     return render(request,"ProyectoCoderApp/acerca_de.html",{})
+
+
+
+class EstudioDetail(DetailView):
+
+    model = Estudios
+    template_name = "ProyectoCoderApp/estudio_detail.html"
