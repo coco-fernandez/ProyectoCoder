@@ -15,6 +15,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import *
+from django.contrib import messages
 
 
 
@@ -177,7 +178,7 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
 
     if request.method=="POST":    #post
         
-        formulario=nuevo_estudio(request.POST)
+        formulario=nuevo_estudio(request.POST, request.FILES)
         
         if formulario.is_valid():
             
@@ -193,6 +194,7 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
             
             estudio.save()    #guarda en la DB
             
+            messages.success(request, "La publicación se creo exitosamente.")
             return redirect("estudios")
         
         else:
@@ -202,6 +204,30 @@ def crear_estudio(request):    # clase de creacion de curso por formulario de we
         formulario=nuevo_estudio()
         
         return render(request,'ProyectoCoderApp/formulario_estudio.html',{"form":formulario})
+    
+@login_required
+def crear_publicacion(request):   
+   
+    if request.method == "POST":
+        
+        publicacion = CrearPublicacion(request.POST, request.FILES)
+        
+        if publicacion.is_valid():
+
+            informacion = publicacion.cleaned_data
+
+            publicacion_nueva = Publicaciones(imagen=informacion["imagen"],pais=informacion["pais"], titulo=informacion["titulo"], descripcion=informacion["descripcion"], fecha_viaje=datetime.datetime.today(), autor=request.user)
+            publicacion_nueva.save()
+
+            messages.success(request, "La publicacion se creo exitosamente.") 
+            return redirect('mis_publicaciones')
+        
+        return render(request, "MillasViajerasApp/crearpublicacion.html", {"publicacion":publicacion})
+    
+    publicacion = CrearPublicacion()
+    return render(request, 'MillasViajerasApp/crearpublicacion.html', {'publicacion':publicacion})    
+    
+    
 @staff_member_required
 def eliminar_estudio(request,estudio_id):
 

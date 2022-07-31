@@ -11,7 +11,7 @@ class Estudios(models.Model):
     ubicacion = models.CharField(max_length=30)
     cantidad_salas = models.IntegerField()
     detalle = models.CharField(max_length=500)
-    imagen = models.ImageField("Imagen", upload_to="imagen/",null=True,blank=True)
+    imagen = models.ImageField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural="Estudios"
@@ -38,4 +38,4 @@ class Avatar(models.Model):
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    imagen = models.ImageField(upload_to='avatar/', blank=True, null=True)
+    imagen = models.ImageField(upload_to='media/', blank=True, null=True)
