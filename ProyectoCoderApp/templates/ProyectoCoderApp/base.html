@@ -23,15 +23,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a></li>
-                                                
-                        
-                        
                         <li class="nav-item"><a class="nav-link" href="{% url 'bandas' %}">Bandas</a></li>
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'productores' %}">Productores</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'estudios' %}">Estudios y Salas de Ensayo</a></li>
                         {% endif %}
-
+                        
                         {% if user.is_authenticated %}
                             
                             <img class="rounded" src="{{user.avatar.imagen.url}}" style="height: 35px; margin-left: 5px;">
@@ -48,12 +45,8 @@
             </div>
         </nav>
 
-
-
         {% block contenidoPagina %}
       
-
-
 
         {% endblock %}
 
