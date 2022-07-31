@@ -242,7 +242,7 @@ def editar_estudio(request,estudio_id):
 
     if request.method == "POST":
 
-        formulario = nuevo_estudio(request.POST)
+        formulario = nuevo_estudio(request.POST, request.FILES)
 
         if formulario.is_valid():
             
